@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 
+import {router as userRouter} from "./routes/users.js"
+
 const APP_PORT = 8080;
 const APP_URL = `http://localhost:${APP_PORT}`;
 
@@ -8,13 +10,7 @@ const app = express();
 
 var whitelist = ['http://localhost', 'http://insignia.local'];
 var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
+  origin:  (origin, callback) => whitelist.indexOf(origin) !== -1 ? callback(null, true) : callback(new Error('Not allowed by CORS'))
 }
 
 app.use(express.json());
