@@ -1,0 +1,16 @@
+<h1>Participants</h1>
+<ul>
+  {{#each users}}
+    <li>{{this.name}}</li>
+  {{/each}}
+</ul>
+<h1>Ganador {{random}} {{user.name}}</h1>
+
+{{#with user}}
+  <h3>{{name}}</h3>
+  {{#if isAdmin}}
+    <p>Admin</p>
+  {{else}}
+    <p>User</p>
+  {{/if}}
+{{/with}}
